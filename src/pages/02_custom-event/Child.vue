@@ -12,7 +12,7 @@ import { ref, onMounted } from "vue";
 let toy = ref('奥特曼')
 // 声明事件
 const emit = defineEmits(['send-toy'])
-// //挂载3s之后触发事件
+//挂载3s之后触发事件
 // onMounted(() => {
 // 	setTimeout(() => {
 // 		emit('send-toy')

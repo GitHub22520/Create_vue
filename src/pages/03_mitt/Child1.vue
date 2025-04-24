@@ -8,7 +8,7 @@
 
 <script setup lang="ts" name="Child1">
 import { ref } from 'vue'
-import emitter from '@/utils/emitter';
+import emitter from '../../utils/emitter';
 
 // 数据
 let toy = ref('奥特曼')

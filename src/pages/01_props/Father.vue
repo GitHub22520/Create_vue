@@ -11,13 +11,16 @@
 </template>
 
 <script setup lang="ts" name="Father">
+import { log } from 'console'
 import Child from './Child.vue'
+
 import { ref } from 'vue'
 // 数据
 let car = ref('奔驰')
 let toy = ref('')
 // 方法
 function getToy(value: string) {
+	console.log('父',value)
 	toy.value = value
 }
 </script>
