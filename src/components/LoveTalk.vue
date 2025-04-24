@@ -1,28 +1,30 @@
 <template>
     <div class="talk">
-        <button @click="getTalk">获取一句土味情话</button>
+        <button @click="getLoveTalk">获取一句土味情话</button>
         <ul>
-            <li v-for="item in talkList" :key="item.id">{{ item.title }}</li>
+            <li v-for="item in talkStore.talkList" :key="item.id">{{ item.title }}</li>
         </ul>
     </div>
 </template>
-
 
 <script setup lang="ts" name="LoveTalk">
 import { reactive } from 'vue';
 import axios from 'axios';
 import { nanoid } from 'nanoid';
+import { useTalkStore } from '@/store/lovetalk';
+import { storeToRefs } from 'pinia';
 
-let talkList = reactive([
-    {id:'iiiu01', title:'你是我心中的一首歌，永远也唱不腻。'},
-]);
+const talkStore = useTalkStore()
+// console.log(talkStore.talkList)
+const {talkList} = storeToRefs(talkStore)
 
-async function getTalk() {
-    //连续结构赋值+重命名
-    let {data:{content:title}} = await axios.get('https://api.uomg.com/api/rand.qinghua?format=json');
-    let obj = {id:nanoid(), title}
-    // console.log(obj);
-    talkList.unshift(obj);
+talkStore.$subscribe((mutate,state)=>{
+    console.log('talkStore 里面保存的数据发生了变化',mutate,state)
+    localStorage.setItem('talkList',JSON.stringify(state.talkList))
+})
+
+function getLoveTalk(){
+    talkStore.getATalk()
 }
 
 </script>
