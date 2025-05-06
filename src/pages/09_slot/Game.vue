@@ -1,5 +1,5 @@
 <template>
-  <div class="game">
+  <div class="category">
     <h2>游戏列表</h2>
     <slot
       :youxi="games"

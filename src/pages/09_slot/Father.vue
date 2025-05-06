@@ -54,6 +54,7 @@ import Game from './Game.vue'
 
 .content {
   display: flex;
+  /*主轴对齐方式 */
   justify-content: space-evenly;
 }
 
